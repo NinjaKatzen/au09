@@ -204,14 +204,36 @@ public class MyArrayList {
 	}
 	
 	/**
-	 * 
-	 * @param o
-	 * @return
+	 * Löscht alle Elemente aus der Liste, mit Ausnahme von den übergebenen Objekten.
+	 * @param o Ein Array von Objekten, welche in der Liste behalten werden sollen
 	 * @author Selina Brinnich
 	 */
-	public boolean retainAll(Object[] o){
+	public void retainAll(Object[] o){
+		int z = 0;
+		for(int i = 0; i < data.length; i++){
+			for(int j = 0; j < o.length; j++){
+				if(data[i] == o[j]){
+					j = o.length;
+				}else{
+					if(j == (o.length-1)){
+						data[i] = null;
+						z++;
+					}
+				}
+			}
+		}
+		if(z > 0){
+			Object[] dataN = new Object[data.length-z];
+			int indexN = 0;
+			for(int i = 0; i < data.length; i++){
+				if(o != data[i]){
+					dataN[indexN] = data[i];
+					indexN++;
+				}
+			}
+			this.data = dataN;
+		}
 		
-		return false;
 	}
 	
 	/**
