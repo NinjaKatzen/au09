@@ -4,38 +4,40 @@ package team6.dynamicData;
  * nach.
  */
 public class MyArrayList {
-	
+
 	/**
 	 * Speichert die Daten der "Collection"
 	 */
 	private Object[] data;
-	
+
 	/**
+	 * Default-Konstruktor
+	 * Erstellt ein Array mit der Größe 0.
 	 * 
 	 * @author Tobias Perny
 	 */
 	public MyArrayList(){
-		
+		data = new Object[0];
 	}
-	
+
 	/**
-	 * 
-	 * @param o
+	 * Speichert ein übergebenes Array in das Attribut.
+	 * @param o das übergebene Array
 	 * @autor Tobias Perny
 	 */
 	public MyArrayList(Object[] o){
-		
+		data = o;
 	}
-	
+
 	/**
-	 * 
-	 * @param size
+	 * Erstellt ein Array mit übergebener Größe
+	 * @param size die Größe die das Array haben wird.
 	 * @author Tobias Perny
 	 */
 	public MyArrayList(int size){
-		
+		data = new Object[size];
 	}
-	
+
 	/**
 	 * 
 	 * @param o
@@ -43,9 +45,9 @@ public class MyArrayList {
 	 */
 	public boolean add(Object o){
 		return false;
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param index
@@ -53,17 +55,17 @@ public class MyArrayList {
 	 * @author Niklas Hohenwarter
 	 */
 	public void add(int index, Object o){
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @author Inga Keilholz
 	 */
 	public void clear(){
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param o
@@ -72,9 +74,9 @@ public class MyArrayList {
 	 */
 	public boolean contains(Object o){
 		return false;
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param index
@@ -83,20 +85,24 @@ public class MyArrayList {
 	 */
 	public Object get(int index){
 		return index;
-		
+
 	}
-	
+
 	/**
-	 * 
-	 * @param o
-	 * @return
+	 * In dieser Methode wird nach dem Index eines Objects gesucht.
+	 * @param o das Object dessen Index gesucht wird
+	 * @return	den gesuchten Index oder -1 wenn das Object nicht gefunden wurde
 	 * @author Tobias Perny
 	 */
 	public int indexOf(Object o){
-		return 0;
-		
+		for(int i=0 ; i<data.length; i++){
+			if(data[i] == o){
+				return i;
+			}
+		}
+		return -1;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -104,9 +110,9 @@ public class MyArrayList {
 	 */
 	public boolean isEmpty(){
 		return false;
-		
+
 	}
-	
+
 	/**
 	 * Geht die gesamte gespeicherte Liste durch und sucht nach dem übergebenen Objekt. Zurückgegeben wird der Index,
 	 * an dem das Objekt gespeichert ist. Sollte das Objekt mehrfach in der Liste vorkommen, so wird der letzte Index, 
@@ -118,16 +124,16 @@ public class MyArrayList {
 	 */
 	public int lastIndexOf(Object o){
 		int index = -1;
-		
+
 		for(int i = 0; i < data.length; i++){
 			if(o == data[i]){
 				index = i;
 			}
 		}
-		
+
 		return index;
 	}
-	
+
 	/**
 	 * Löscht ein einziges Element aus der gespeicherten Liste. Dieses Element wird durch den übergebenen Index bestimmt.
 	 * @param index Der Index des zu löschenden Elementes der Liste
@@ -144,10 +150,10 @@ public class MyArrayList {
 				}
 			}
 		}
-		
+
 		this.data = dataN;
 	}
-	
+
 	/**
 	 * Löscht ein bestimmtes Objekt aus der gespeicherten Liste. Sollte dieses Objekt mehrfach in der Liste vorkommen,
 	 * so werden alle entsprechenden Objekte gelöscht.
@@ -164,7 +170,7 @@ public class MyArrayList {
 				z++;
 			}
 		}
-		
+
 		if(z > 0){
 			Object[] dataN = new Object[data.length-z];
 			int indexN = 0;
@@ -175,13 +181,13 @@ public class MyArrayList {
 				}
 			}
 			this.data = dataN;
-			
+
 			return true;
 		}else{
 			return false;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param o
@@ -190,9 +196,9 @@ public class MyArrayList {
 	 */
 	public boolean removeAll(Object[] o){
 		return false;
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param fromIndex
@@ -200,9 +206,9 @@ public class MyArrayList {
 	 * @author Niklas Hohenwarter
 	 */
 	public void removeRange(int fromIndex, int toIndex){
-		
+
 	}
-	
+
 	/**
 	 * Löscht alle Elemente aus der Liste, mit Ausnahme von den übergebenen Objekten.
 	 * @param o Ein Array von Objekten, welche in der Liste behalten werden sollen
@@ -233,21 +239,26 @@ public class MyArrayList {
 			}
 			this.data = dataN;
 		}
-		
+
 	}
-	
+
 	/**
-	 * 
-	 * @param index
-	 * @param o
-	 * @return
+	 * Speichert ein übergebenes Object an eine bestimmte Stelle des Arrays.
+	 * @param index	Der Index wohin das Object gespeichert wird.
+	 * @param o Das Object das gespeichert wird
+	 * @return	true oder false je nachdem ob es funktioniert hat
 	 * @author Tobias Perny
 	 */
-	public Object set(int index, Object o){
-		return o;
-		
+	public boolean set(int index, Object o){
+		if(index >= 0){
+			if(data.length > index){
+				data[index] = o;
+				return true;
+			}
+		}
+		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -255,9 +266,9 @@ public class MyArrayList {
 	 */
 	public int size(){
 		return 0;
-		
+
 	}
-	
+
 	/**
 	 * Gibt das Array mit den Daten zurÃ¼ck.
 	 * @return Daten-Attribut
@@ -266,5 +277,5 @@ public class MyArrayList {
 	public Object[] toArray(){
 		return data;	
 	}
-	
+
 }
