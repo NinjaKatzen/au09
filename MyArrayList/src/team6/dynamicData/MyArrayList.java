@@ -57,32 +57,47 @@ public class MyArrayList {
 	}
 	
 	/**
+	 * Mehode die den Inhalt des Object Arrays löscht
 	 * 
 	 * @author Inga Keilholz
 	 */
 	public void clear(){
 		
+		data = new Object[0];
+		
 	}
 	
 	/**
+	 * Methode die überprüft ob ein Objekt im Array enthalten ist
 	 * 
 	 * @param o
 	 * @return
 	 * @author Inga Keilholz
 	 */
 	public boolean contains(Object o){
+		
+		for(int i=0; i<data.length; i++){
+			if(data[i]==o){
+				return true;
+			}	
+		}
+		
 		return false;
 		
 	}
 	
 	/**
+	 * Methode die ein Objekt an einer bestimmten Stelle, dem Index, 
+	 * zurück gibt
 	 * 
 	 * @param index
-	 * @return
+	 * @return 
 	 * @author Inga Keilholz
 	 */
+	
 	public Object get(int index){
-		return index;
+		
+			return data[index];
 		
 	}
 	
@@ -98,11 +113,17 @@ public class MyArrayList {
 	}
 	
 	/**
+	 * Methode die überprüft ob das Object leer ist.
 	 * 
 	 * @return
 	 * @author Inga Keilholz
 	 */
 	public boolean isEmpty(){
+		
+		if(data.length==0){
+			return true;
+		}
+		
 		return false;
 		
 	}
@@ -249,12 +270,14 @@ public class MyArrayList {
 	}
 	
 	/**
+	 * Methode die zurück gibt wie lang das Object Array ist.
 	 * 
 	 * @return
 	 * @author Inga Keilholz
 	 */
 	public int size(){
-		return 0;
+		
+		return data.length;
 		
 	}
 	
